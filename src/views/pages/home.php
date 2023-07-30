@@ -35,10 +35,6 @@
     </form>
 </div>
 
-<script>
-    function cadastrar() {
-        
-    }
-</script>
+<script src="<?=$base;?>/assets/js/script.js"></script>
 
 <?php $render('footer'); ?>

@@ -6,7 +6,7 @@ use \core\Controller;
 class HomeController extends Controller {
 
     public function index() {
-        $this->render('home', ['nome' => 'Bonieky']);
+        $this->render('home');
     }
 
     public function sobre() {
@@ -15,6 +15,10 @@ class HomeController extends Controller {
 
     public function sobreP($args) {
         print_r($args);
+    }
+
+    public function cadastro() {
+        $this->render('cadastro');
     }
 
 }
