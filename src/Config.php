@@ -2,7 +2,7 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = '/Projetos/task-manager/public';
+    const BASE_DIR = '/task-manager/public';
 
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';
