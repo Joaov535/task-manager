@@ -1,13 +1,19 @@
-<?php $render('header'); ?>
+<?php $render('header');
+
+if (!empty($_SESSION['RegMsg'])) {
+    $msg = $_SESSION['RegMsg'];
+}
+
+?>
 
 <form action="<?= $base; ?>/signUp" method="post">
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Usuário</label>
-        <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+        <label for="username" class="form-label">Usuário</label>
+        <input type="text" name="username" class="form-control" placeholder="Username">
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Senha</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" name="password" class="form-control" placeholder="********">
     </div>
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -19,6 +25,17 @@
 <?php $render('footer'); ?>
 
 <script>
+    let msg = "<?= $msg; ?>";
+    document.addEventListener('DOMContentLoaded', () => {
+
+        if (msg.length > 0) {
+
+            window.alert(msg);
+            <?php $_SESSION['RegMsg'] = ''; ?>
+        }
+    })
+
+
     let checkbox = document.querySelector('#exampleCheck1');
     let button = document.querySelector('.btn');
 

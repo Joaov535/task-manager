@@ -1,14 +1,13 @@
-<?php $render('header'); ?>
+<?php $render('header');
+
+if (!empty($_SESSION['RegMsg'])) {
+    $msg = $_SESSION['RegMsg'];
+}
+?>
 
 <div class="login">
-    <form action="" method="get">
+    <form action="<?= $base; ?>/signIn" method="get">
         <div class="form-floating mb-3 input-group">
-            <!-- <span class="input-group-text">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                </svg>
-            </span> -->
             <input type="email" class="form-control" id="floatingInput" placeholder="Username">
             <label for="floatingInput">User</label>
         </div>
@@ -36,6 +35,19 @@
 </div>
 
 <script>
+    let msg = "<?= $msg; ?>";
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        if (msg.length > 0) {
+            setTimeout(() => {
+                window.alert(msg);
+                <?php $_SESSION['RegMsg'] = ''; ?>
+            }, 800);
+
+        }
+    });
+
     function cadastrar() {
         window.location.href = "<?= $base; ?>/signUp";
     }

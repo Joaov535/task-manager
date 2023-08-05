@@ -1,8 +1,8 @@
 :root {
     --blue: #000080;
     --light: #F8F8FF;
-    --light2: 	#FFFAFA;
-    --grey: 	#DCDCDC;
+    --light2: #FFFAFA;
+    --grey: #DCDCDC;
 }
 
 
@@ -27,8 +27,9 @@ header {
     font-size: larger;
 }
 
+
 .content {
-    height: 85vh;
+    height: 83vh;
     width: 100%;
     background-color: var(--light2);
     display: flex;
@@ -46,19 +47,19 @@ header {
     background-color: white;
 }
 
-.buttons{
+.buttons {
     margin-top: 30px;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-button{
+button {
     width: 48%;
     height: 50px;
 }
 
-footer{
+footer {
     color: var(--light2);
     background-color: var(--blue);
     padding: 20px 0px 20px 20px;
