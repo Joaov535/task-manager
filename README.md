@@ -1,4 +1,4 @@
-# task-manager
+# Task Manager
 
 Gerenciador de tarefas criado para exercitar a criação de sistemas em MVC
 
