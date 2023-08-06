@@ -7,35 +7,24 @@ use \core\Model;
 class RegisteredUser extends Model
 {
 
-    public static function vefifyNameUser(String $name)
+    public static function verifyUserExist(String $name): array
     {
-
         $data = User::select()
             ->where('username', $name)
             ->execute();
 
         if (count($data) == 0) {
-
-            return false;
+            $arr = null;
         } else {
-
-            return true;
+            $arr = $data[0];
         }
+
+        return $arr;
     }
 
-    public static function verifyUser(array $user)
+    public static function vefifyPassUser(String $passwordInput, $passwordData): bool
     {
-        $data = User::select()
-            ->where('username', $user['name'])
-            ->where('password', $user['password'])
-            ->execute();
-
-        if (count($data) == 0) {
-
-            return false;
-        } else {
-
-            return true;
-        }
+        $pass = password_verify($passwordInput, $passwordData);
+        return $pass;
     }
 }

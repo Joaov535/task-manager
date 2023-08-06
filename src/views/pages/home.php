@@ -1,18 +1,18 @@
-<?php $render('header');
-
+<?php
+$render('header');
 if (!empty($_SESSION['RegMsg'])) {
     $msg = $_SESSION['RegMsg'];
 }
 ?>
 
 <div class="login">
-    <form action="<?= $base; ?>/signIn" method="get">
+    <form action="<?= $base; ?>/signIn" method="post">
         <div class="form-floating mb-3 input-group">
-            <input type="email" class="form-control" id="floatingInput" placeholder="Username">
+            <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username">
             <label for="floatingInput">User</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
         <div class="buttons">
