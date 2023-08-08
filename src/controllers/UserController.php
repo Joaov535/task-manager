@@ -3,6 +3,7 @@
 namespace src\controllers;
 
 use \core\Controller;
+use Exception;
 use \src\models\RegisteredUser;
 use \src\models\AddUser;
 use \src\models\User;
@@ -30,13 +31,16 @@ class UserController extends Controller
         } else {
 
             $cripPassword = password_hash($inputPassword, PASSWORD_DEFAULT);
-
+            try {
             User::insert([
                 'username' => $inputUsername,
                 'password' => $cripPassword
             ])
                 ->execute();
-
+            } catch(Exception $e) {
+                $_SESSION['err'] = $e->getMessage();
+                $this->redirect('/signUp');
+            }
             $_SESSION['RegMsg'] = 'Usuário cadastrado com sucesso!';
             $this->redirect('/');
         }

@@ -14,7 +14,7 @@ class RegisteredUser extends Model
             ->execute();
 
         if (count($data) == 0) {
-            $arr = null;
+            $arr = [];
         } else {
             $arr = $data[0];
         }

@@ -3,7 +3,9 @@
 if (!empty($_SESSION['RegMsg'])) {
     $msg = $_SESSION['RegMsg'];
 }
-
+if (!empty($_SESSION['err'])) {
+    $msg = $_SESSION['err'];
+}
 ?>
 
 <form action="<?= $base; ?>/signUp" method="post">
