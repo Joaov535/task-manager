@@ -9,4 +9,8 @@ class TaskController extends Controller {
         $this->render('tasks');
     }
 
+    public function makeTask() {
+        $this->render('makeTask');
+    }
+
 }

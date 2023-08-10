@@ -1,6 +1,7 @@
 <?php
 
 use core\Router;
+use src\controllers\TaskController;
 
 $router = new Router();
 
@@ -15,3 +16,5 @@ $router->post('/signUp', 'UserController@addUser');
 $router->post('/signIn', 'UserController@login');
 $router->get('/tasks', 'TaskController@tasks');
 
+// Tasks
+$router->get('/makeTask', 'TaskController@makeTask');
