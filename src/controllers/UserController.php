@@ -56,7 +56,7 @@ class UserController extends Controller
 
         if($checkRegistration && $checkPassword) {
 
-            $_SESSION['UserLogged'] = $checkRegistration['username'];
+            $_SESSION['UserLogged'] = $checkRegistration;
             $this->redirect('/tasks');
         } else {
 
