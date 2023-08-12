@@ -1,16 +1,42 @@
 <?php
+
 namespace src\controllers;
 
 use \core\Controller;
+use \src\models\Task;
 
-class TaskController extends Controller {
+class TaskController extends Controller
+{
 
-    public function tasks() {
-        $this->render('tasks');
+    public function tasks()
+    {
+        if (!empty($_SESSION['UserLogged'])) {
+            $this->render('tasks');
+        } else {
+            $this->redirect('/');
+        }
     }
 
-    public function makeTask() {
+    public function makeTask()
+    {
         $this->render('makeTask');
     }
 
+    public function addTask()
+    {
+        $task['userId'] = $_SESSION['UserLogged']['id'];
+        $task['taskName'] = filter_input(INPUT_POST, 'nameTask', FILTER_SANITIZE_SPECIAL_CHARS);
+        $task['taskInfo'] = filter_input(INPUT_POST, 'infoTask', FILTER_SANITIZE_SPECIAL_CHARS);
+        $task['taskSchedule'] = filter_input(INPUT_POST, 'date');
+
+        if (!empty($task['userId']) || !empty($task['taskName']) || !empty($task['taskInfo']) || !empty($task['taskSchedule'])) {
+
+            $statusSend = Task::sendTask($task);
+            $_SESSION['sendTask'] = $statusSend;
+            $this->redirect('/makeTask');
+        }
+
+        $_SESSION['sendTask'] = 'faltam dados';
+        $this->redirect('/makeTask');
+    }
 }

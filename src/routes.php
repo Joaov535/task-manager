@@ -18,3 +18,4 @@ $router->get('/tasks', 'TaskController@tasks');
 
 // Tasks
 $router->get('/makeTask', 'TaskController@makeTask');
+$router->post('/makeTask', 'TaskController@addTask');

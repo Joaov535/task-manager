@@ -19,6 +19,11 @@
         <div class="header">
             Task Manager
         </div>
+        <?php if(isset($_SESSION['UserLogged'])) :?>
+        <div class="userLogged">
+            Bem vindo, <?=$_SESSION['UserLogged']['username']; ?>!
+        </div>
+        <?php endif; ?>
     </header>
 
 <div class="content">
