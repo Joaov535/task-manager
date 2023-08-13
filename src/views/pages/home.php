@@ -1,5 +1,7 @@
 <?php
 $render('header');
+$msg = '';
+$msgLogin= '';
 if (!empty($_SESSION['RegMsg'])) {
     $msg = $_SESSION['RegMsg'];
 }

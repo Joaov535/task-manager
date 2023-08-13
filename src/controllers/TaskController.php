@@ -29,10 +29,10 @@ class TaskController extends Controller
         $task['taskInfo'] = filter_input(INPUT_POST, 'infoTask', FILTER_SANITIZE_SPECIAL_CHARS);
         $task['taskSchedule'] = filter_input(INPUT_POST, 'date');
 
-        if (!empty($task['userId']) || !empty($task['taskName']) || !empty($task['taskInfo']) || !empty($task['taskSchedule'])) {
+        if (!empty($task['userId']) && !empty($task['taskName']) && !empty($task['taskInfo']) && !empty($task['taskSchedule'])) {
 
             $statusSend = Task::sendTask($task);
-            $_SESSION['sendTask'] = $statusSend;
+            $_SESSION['sendTask'] = $statusSend['status'];
             $this->redirect('/makeTask');
         }
 

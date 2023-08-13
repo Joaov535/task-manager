@@ -16,4 +16,9 @@ class HomeController extends Controller
             $this->redirect('/tasks');
         }
     }
+
+    public function teste()
+    {
+        $this->render('teste');
+    }
 }

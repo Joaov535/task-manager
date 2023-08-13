@@ -1,13 +1,16 @@
 <?php
 $render('header');
+if (!empty($_SESSION['sendTask'])) {
+    $msg = $_SESSION['sendTask']['status'];
+}
 ?>
 
-<form action="">
+<form action="<?= $base; ?>/makeTask" method="post">
     <div class="mb-3">
-        <input type="email" class="form-control" id="taskName" placeholder="Nome da tarefa" aria-describedby="emailHelp">
+        <input type="text" name="nameTask" class="form-control" id="taskName" placeholder="Nome da tarefa">
     </div>
     <div class="mb-3">
-        <textarea class="form-control" placeholder="Descreva os detalhes da tarefa" id="floatingTextarea2" style="height: 100px"></textarea>
+        <textarea class="form-control" name="infoTask" placeholder="Descreva os detalhes da tarefa" id="infoTask" style="height: 100px"></textarea>
     </div>
     <div class="mb-3">
         <label for="taskSchedule" class="form-label">Agendada para:</label>
@@ -15,6 +18,18 @@ $render('header');
     </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
+
+<script>
+    let msg = "<?= $msg; ?>";
+    document.addEventListener('DOMContentLoaded', () => {
+
+        if (msg.length > 0) {
+
+            window.alert(msg);
+            <?php $_SESSION['sendTask'] = ''; ?>
+        }
+    })
+</script>
 
 <?php
 $render('footer');
