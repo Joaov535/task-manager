@@ -8,6 +8,16 @@ use Exception;
 class Task extends Model
 {
 
+    public static function getTask($userId): array
+    {
+        $arrTasks = array();
+        $id = $userId;
+
+        $arrTasks = Task::select(['task_name', 'task_info', 'task_schedule'])->where('user', $id)->execute();
+
+        return $arrTasks;
+    }
+
     public static function sendTask(array $task): array
     {
         $sendTask = array();
@@ -26,7 +36,7 @@ class Task extends Model
             $sendTask['status'] = 'Tarefa cadastrada';
         } catch (Exception $e) {
 
-            $sendTask['status'] = $e;
+            $sendTask['status'] = 'Erro: '.$e;
         }
 
         return $sendTask;

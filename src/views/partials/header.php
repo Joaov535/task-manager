@@ -17,7 +17,7 @@
             <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
         </svg>
         <div class="header">
-            Task Manager
+           <a href="<?=$base;?>" style="text-decoration:none; color:white">Task Manager</a>
         </div>
         <?php if(isset($_SESSION['UserLogged'])) :?>
         <div class="userLogged">

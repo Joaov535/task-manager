@@ -1,5 +1,5 @@
 <?php
-$render('header');
+$render('header'); 
 if (!empty($_SESSION['sendTask'])) {
     $msg = $_SESSION['sendTask']['status'];
 }
@@ -25,7 +25,7 @@ if (!empty($_SESSION['sendTask'])) {
 
         if (msg.length > 0) {
 
-            window.alert(msg);
+            alert(msg);
             <?php $_SESSION['sendTask'] = ''; ?>
         }
     })

@@ -11,7 +11,10 @@ class TaskController extends Controller
     public function tasks()
     {
         if (!empty($_SESSION['UserLogged'])) {
-            $this->render('tasks');
+            $arrTasks = Task::getTask($_SESSION['UserLogged']['id']);
+            $this->render('tasks', [
+                'tasks' => $arrTasks
+            ]);
         } else {
             $this->redirect('/');
         }
