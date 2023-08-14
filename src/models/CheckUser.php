@@ -4,7 +4,7 @@ namespace src\models;
 
 use \core\Model;
 
-class RegisteredUser extends Model
+class CheckUser extends Model
 {
 
     public static function verifyUserExist(String $name): array

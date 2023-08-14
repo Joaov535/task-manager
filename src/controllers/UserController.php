@@ -4,8 +4,8 @@ namespace src\controllers;
 
 use \core\Controller;
 use Exception;
-use \src\models\RegisteredUser;
 use \src\models\AddUser;
+use src\models\CheckUser;
 use \src\models\User;
 
 
@@ -22,7 +22,7 @@ class UserController extends Controller
 
         $inputUsername = filter_input(INPUT_POST, 'username');
         $inputPassword = filter_input(INPUT_POST, 'password');
-        $checkRegistration = RegisteredUser::verifyUserExist($inputUsername);
+        $checkRegistration = CheckUser::verifyUserExist($inputUsername);
 
         if ($checkRegistration) {
 
@@ -51,8 +51,8 @@ class UserController extends Controller
         $inputUsername = filter_input(INPUT_POST, 'username');
         $inputPassword = filter_input(INPUT_POST, 'password');
 
-        $checkRegistration = RegisteredUser::verifyUserExist($inputUsername);
-        $checkPassword = RegisteredUser::vefifyPassUser($inputPassword, $checkRegistration['password']);
+        $checkRegistration = CheckUser::verifyUserExist($inputUsername);
+        $checkPassword = CheckUser::vefifyPassUser($inputPassword, $checkRegistration['password']);
 
         if($checkRegistration && $checkPassword) {
 
