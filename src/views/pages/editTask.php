@@ -1,8 +1,7 @@
 <?php
-$render('header');
-$msg = '';
+$render('header'); 
 if (!empty($_SESSION['sendTask'])) {
-    $msg = $_SESSION['sendTask'];
+    $msg = $_SESSION['sendTask']['status'];
 }
 ?>
 
@@ -26,15 +25,8 @@ if (!empty($_SESSION['sendTask'])) {
 
         if (msg.length > 0) {
 
-            setTimeout(() => {
-
-                alert(msg);
-            }, 800);
-
-            setTimeout(() => {
-
-                <?php $_SESSION['sendTask'] = ''; ?>
-            }, 2000);
+            alert(msg);
+            <?php $_SESSION['sendTask'] = ''; ?>
         }
     })
 </script>

@@ -8,12 +8,14 @@ use Exception;
 class Task extends Model
 {
 
-    public static function getTask($userId): array
+    public static function getTasks($userId): array
     {
         $arrTasks = array();
         $id = $userId;
 
-        $arrTasks = Task::select(['task_name', 'task_info', 'task_schedule'])->where('user', $id)->execute();
+        $arrTasks = Task::select(['task_name', 'task_info', 'task_schedule'])
+        ->where('user', $id)
+        ->get();
 
         return $arrTasks;
     }
@@ -22,23 +24,31 @@ class Task extends Model
     {
         $sendTask = array();
 
-        try {
+        Task::insert([
+            'user' => $task['userId'],
+            'task_name' => $task['taskName'],
+            'task_info' => $task['taskInfo'],
+            'task_schedule' => $task['taskSchedule']
 
-            Task::insert([
-                'user' => $task['userId'],
-                'task_name' => $task['taskName'],
-                'task_info' => $task['taskInfo'],
-                'task_schedule' => $task['taskSchedule']
+        ])->execute();
 
-            ])
-                ->execute();
+        $sendTask['status'] = 'Tarefa cadastrada';
 
-            $sendTask['status'] = 'Tarefa cadastrada';
-        } catch (Exception $e) {
-
-            $sendTask['status'] = 'Erro: '.$e;
-        }
 
         return $sendTask;
+    }
+
+    public static function getTask($task): array
+    {
+        $arrTasks = array();
+        
+
+        $arrTasks = Task::select(['task_name', 'task_info', 'task_schedule'])
+            ->where('task_name', $task['name'])
+            ->where('task_info', $task['info'])
+            ->where('task_schedule', $task['schedule'])
+            ->get();
+
+        return $arrTasks;
     }
 }
