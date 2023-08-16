@@ -19,6 +19,9 @@ $router->post('/signUp', 'UserController@addUser');
 $router->post('/signIn', 'UserController@login');
 $router->get('/tasks', 'TaskController@tasks');
 
+// Logout
+$router->get('/logout', 'UserController@logout');
+
 // Tasks
 $router->get('/makeTask', 'TaskController@makeTask');
 $router->post('/makeTask', 'TaskController@addTask');

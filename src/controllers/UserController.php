@@ -64,4 +64,10 @@ class UserController extends Controller
             $this->redirect('/');
         }
     }
+
+    public function logout() 
+    {
+        unset($_SESSION['UserLogged']);
+        $this->redirect('/');
+    }
 }
