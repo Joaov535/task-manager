@@ -34,16 +34,21 @@ class TaskController extends Controller
 
         if (!empty($task['userId']) && !empty($task['taskName']) && !empty($task['taskInfo']) && !empty($task['taskSchedule'])) {
 
-            $statusSend = Task::sendTask($task);
-            $_SESSION['sendTask'] = $statusSend['status'];
-            $this->redirect('/makeTask');
+            $taskSend = Task::sendTask($task);
+            if ($taskSend == 'Tarefa cadastrada') {
+                $_SESSION['sendTask'] = $taskSend;
+                $this->redirect('/makeTask');
+            }
+            $_SESSION['sendTask'] = 'Erro:' . $taskSend;
+                $this->redirect('/makeTask');
         }
 
         $_SESSION['sendTask'] = 'faltam dados';
         $this->redirect('/makeTask');
     }
 
-    public function editTask() {
+    public function editTask()
+    {
 
         $id = $_GET['id'];
 
@@ -52,5 +57,23 @@ class TaskController extends Controller
         $this->render('editTask', [
             'task' => $task[0]
         ]);
+    }
+
+    public function editTaskAction()
+    {
+        $arrTasks['id'] = filter_input(INPUT_POST, 'id');
+        $arrTasks['task_name'] = filter_input(INPUT_POST, 'nameTask', FILTER_SANITIZE_SPECIAL_CHARS);
+        $arrTasks['task_info'] = filter_input(INPUT_POST, 'infoTask', FILTER_SANITIZE_SPECIAL_CHARS);
+        $arrTasks['task_schedule'] = filter_input(INPUT_POST, 'date');
+
+        // $this->render('teste', [
+        //     'teste' => $arrTasks
+        // ]);
+
+        $status = Task::updateTask($arrTasks);
+
+        $_SESSION['statusUpdateTask'] = $status;
+
+        $this->redirect('/editTask');
     }
 }
