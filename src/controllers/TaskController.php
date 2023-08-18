@@ -42,4 +42,15 @@ class TaskController extends Controller
         $_SESSION['sendTask'] = 'faltam dados';
         $this->redirect('/makeTask');
     }
+
+    public function editTask() {
+
+        $id = $_GET['id'];
+
+        $task = Task::getTaskById($id);
+
+        $this->render('editTask', [
+            'task' => $task[0]
+        ]);
+    }
 }

@@ -25,3 +25,4 @@ $router->get('/logout', 'UserController@logout');
 // Tasks
 $router->get('/makeTask', 'TaskController@makeTask');
 $router->post('/makeTask', 'TaskController@addTask');
+$router->get('/editTask', 'TaskController@editTask');

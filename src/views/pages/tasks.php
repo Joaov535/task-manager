@@ -15,10 +15,10 @@ $render('header');
         <?php if (!empty($tasks)) : ?>
             <?php foreach ($tasks as $task) : ?>
                 <tr>
-                    <?php foreach ($task as $field) : ?>
-                        <td><?= $field ?></td>
-                    <?php endforeach ?>
-                    <td>ações</td>
+                    <td><?=$task['task_name'];?></td>
+                    <td><?=$task['task_info'];?></td>
+                    <td><?=$task['task_schedule'];?></td>
+                    <td><a href="<?=$base;?>/editTask?id=<?=$task['id']?>">Editar</a> | <a href="http://">Excluir</a></td>
                 </tr>
             <?php endforeach; ?>
         <?php else : ?>

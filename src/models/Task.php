@@ -13,9 +13,9 @@ class Task extends Model
         $arrTasks = array();
         $id = $userId;
 
-        $arrTasks = Task::select(['task_name', 'task_info', 'task_schedule'])
-        ->where('user', $id)
-        ->get();
+        $arrTasks = Task::select(['id', 'task_name', 'task_info', 'task_schedule'])
+            ->where('user', $id)
+            ->get();
 
         return $arrTasks;
     }
@@ -38,17 +38,13 @@ class Task extends Model
         return $sendTask;
     }
 
-    public static function getTask($task): array
+    public static function getTaskById($id): array
     {
-        $arrTasks = array();
-        
 
-        $arrTasks = Task::select(['task_name', 'task_info', 'task_schedule'])
-            ->where('task_name', $task['name'])
-            ->where('task_info', $task['info'])
-            ->where('task_schedule', $task['schedule'])
+        $arrTask = Task::select(['task_name', 'task_info', 'task_schedule'])
+            ->where('id', $id)
             ->get();
 
-        return $arrTasks;
+        return $arrTask;
     }
 }
