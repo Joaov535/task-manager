@@ -18,7 +18,7 @@ $render('header');
                     <td><?=$task['task_name'];?></td>
                     <td><?=$task['task_info'];?></td>
                     <td><?=$task['task_schedule'];?></td>
-                    <td><a href="<?=$base;?>/editTask?id=<?=$task['id']?>">Editar</a> | <a href="http://">Excluir</a></td>
+                    <td><a href="<?=$base;?>/editTask?id=<?=$task['id']?>">Editar</a> | <a href="<?=$base;?>/delete?id=<?=$task['id'];?>">Excluir</a></td>
                 </tr>
             <?php endforeach; ?>
         <?php else : ?>

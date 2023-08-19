@@ -24,7 +24,7 @@ class Task extends Model
     public static function getTaskById($id): array
     {
 
-        $arrTask = Task::select(['id','task_name', 'task_info', 'task_schedule'])
+        $arrTask = Task::select(['id', 'task_name', 'task_info', 'task_schedule'])
             ->where('id', $id)
             ->get();
 
@@ -68,5 +68,21 @@ class Task extends Model
         }
 
         return $status;
+    }
+
+    public static function deleteTask($id)
+    {
+        try {
+            Task::delete()
+                ->where('id', $id)
+                ->execute();
+
+            $status = 'Tarefa deletada';
+            return $status;
+        } catch (Exception $e) {
+
+            $status = 'Erro ao deletar:' . $e;
+            return $status;
+        }
     }
 }

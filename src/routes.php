@@ -25,3 +25,4 @@ $router->get('/makeTask', 'TaskController@makeTask');
 $router->post('/makeTask', 'TaskController@addTask');
 $router->get('/editTask', 'TaskController@editTask');
 $router->post('/editTask', 'TaskController@editTaskAction');
+$router->get('/delete', 'TaskController@delete');

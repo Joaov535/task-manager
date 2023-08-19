@@ -76,4 +76,16 @@ class TaskController extends Controller
 
         $this->redirect('/editTask');
     }
+
+    public function delete()
+    {
+        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $status = Task::deleteTask($id);
+
+        if($status == 'Tarefa deletada') {
+            $this->redirect('/tasks');
+        }
+
+        $_SESSION['statusDeleteTask'] = $status;
+    }
 }
