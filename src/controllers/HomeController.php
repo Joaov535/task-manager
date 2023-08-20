@@ -6,5 +6,10 @@ use \core\Controller;
 
 class HomeController extends Controller
 {
+    private $userLogged;
 
+    public function __construct()
+    {
+       
+    }
 }

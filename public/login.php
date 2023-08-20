@@ -3,7 +3,7 @@ $render('header');
 ?>
 
 <div class="login">
-    <form action="<?= $base; ?>/signIn" method="post">
+    <form action="<?= $base; ?>/signin" method="post">
         <div class="form-floating mb-3 input-group">
             <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username">
             <label for="floatingInput">User</label>

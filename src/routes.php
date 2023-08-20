@@ -10,3 +10,7 @@ $router->get('/teste', 'HomeController@teste');
 
 // Home
 $router->get('/', 'HomeController@index');
+
+// Login
+$router->get('/signin', 'LoginController@signin');
+$router->post('/signin', 'LoginController@signinAction');
