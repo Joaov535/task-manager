@@ -40,13 +40,14 @@ class User extends Model {
         $this->userPassword = $pw;
     }
 
-    public function getUserToken()
-    {
-        return $this->token;
-    }
+    // Não sei se é necessário
+    // public function getUserToken()
+    // {
+    //     return $this->token;
+    // }
 
-    public function setUsertoken($name, $email)
-    {
-        $this->token = md5(time().rand().$name.$email);
-    }
+    // public function setUsertoken($name, $email)
+    // {
+    //     $this->token = md5(time().rand().$name.$email);
+    // }
 }
