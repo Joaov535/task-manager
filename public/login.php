@@ -1,13 +1,5 @@
 <?php
 $render('header');
-$msg = '';
-$msgLogin= '';
-if (!empty($_SESSION['RegMsg'])) {
-    $msg = $_SESSION['RegMsg'];
-}
-if (!empty($_SESSION['LoginMsg'])) {
-    $msgLogin = $_SESSION['LoginMsg'];
-}
 ?>
 
 <div class="login">
@@ -41,33 +33,6 @@ if (!empty($_SESSION['LoginMsg'])) {
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let msg = "<?= $msg; ?>";
-        let msgLogin = "<?= $msgLogin; ?>";
-
-        if (msg.length > 0) {
-            setTimeout(() => {
-                alert(msg);
-
-            }, 800);
-            setTimeout(() => {
-                <?php $_SESSION['RegMsg'] = ''; ?>
-            }, 2000);
-        }
-
-        if (msgLogin.length > 0) {
-            setTimeout(() => {
-                alert(msgLogin);
-
-            }, 800);
-            setTimeout(() => {
-                <?php $_SESSION['LoginMsg'] = ''; ?>
-            }, 2000);
-        }
-
-
-    });
-
     function cadastrar() {
         window.location.href = "<?= $base; ?>/signUp";
     }
