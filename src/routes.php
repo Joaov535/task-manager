@@ -12,5 +12,5 @@ $router->get('/teste', 'HomeController@teste');
 $router->get('/', 'HomeController@index');
 
 // Login
-$router->get('/signin', 'LoginController@signin');
+$router->get('/login', 'LoginController@signin');
 $router->post('/signin', 'LoginController@signinAction');
