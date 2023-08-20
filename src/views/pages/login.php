@@ -5,10 +5,10 @@ $render('header');
 <div class="login">
     <form action="<?= $base; ?>/signin" method="post">
         <div class="form-floating mb-3 input-group">
-            <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username">
+            <input type="text" class="form-control" id="floatingInput" name="name" placeholder="Username">
             <label for="floatingInput">User</label>
         </div>
-        
+
         <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
             <label for="floatingPassword">Password</label>
@@ -33,6 +33,19 @@ $render('header');
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        let msg = "<?=$flash?>";
+
+        if (msg.length > 0) {
+            setTimeout(function() {
+                //Aqui vem o seu código fantástico
+                alert(msg);
+            }, 500);
+        }
+
+
+    });
+
     function cadastrar() {
         window.location.href = "<?= $base; ?>/signUp";
     }

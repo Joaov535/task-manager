@@ -7,7 +7,7 @@ use \src\models\User;
 class LoginHandler
 {
 
-    public static function checkLogin()
+    public function checkLogin()
     {
         if (!empty($_SESSION['token'])) {
 
@@ -15,14 +15,29 @@ class LoginHandler
 
             $data = User::select()->where('token', $token)->one();
 
-            $userLogged = new User();
-            $userLogged->setUserId($data['id']);
-            $userLogged->setUserName($data['username']);
-            $userLogged->setUserPassword($data['userpassword']);
+            $loggedUser = new User();
+            $loggedUser->setUserId($data['id']);
+            $loggedUser->setUserName($data['username']);
+            $loggedUser->setUserPassword($data['userpassword']);
 
-            return $userLogged;
+            return $loggedUser;
         }
 
+        return false;
+    }
+
+    public function verifyLogin($name, $pw)
+    {
+
+        $user = User::select()->where('username', $name)->one();
+
+        if($user) {
+            if(password_verify($pw, $user['password'])){
+                $token = md5($pw.$name.time().rand(0,9999));
+                User::update()->set('token', $token)->where('username', $name)->execute();
+                return $token;
+            }
+        }
         return false;
     }
 }
